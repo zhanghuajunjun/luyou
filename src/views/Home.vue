@@ -1,18 +1,47 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+ <div class="container">
+   <one></one>
+   <input type="text" v-model="value">
+   <button @click="goTo">跳到About</button>
+
+ </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+ import One from '../components/One'
+ export default {
+   name: 'Home',
+   props: {
 
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+   },
+   data () {
+     return {
+       id: 100
+     }
+   },
+   components: {
+     One,
+   },
+   methods: {
+     goTo(){
+      //  this.$router.push('/detail')
+       this.$router.push({path:'/detail',query:{id:this.id}})
+     }
+   },
+   mounted() {
+
+   },
+   watch: {
+
+   },
+   computed: {
+
+   }
+ }
 </script>
+
+<style scoped lang='scss'>
+.container {
+  text-align: center;
+}
+</style>
